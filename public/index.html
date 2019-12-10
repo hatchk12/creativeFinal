@@ -2,43 +2,43 @@
 <html>
 
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css" />
-  <title>Vue Tickets</title>
+  <link rel="stylesheet" href="styles.css" />
+  <title>Restoration QuoteBook</title>
 </head>
 
 <body>
   <div id="app">
-    <div class="header">
-      <h1>Ticket System</h1>
-    </div>
-
-    <div class="content">
-      <form @submit.prevent="addTicket">
-        <input v-model="addedName" placeholder="Name"></p>
-        <textarea v-model="addedProblem"></textarea>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-
-      <h3>Tickets</h3>
-      <div v-for="ticket in tickets">
-        <hr>
-        <div class="ticket">
-          <div class="problem">
-            <p>{{ticket.problem}}</p>
-            <p><i>-- {{ticket.name}}</i></p>
-          </div>
-          <div class="delete">
-            <button @click="deleteTicket(ticket)" class="delete">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
+   <div class = "sidenav">
+       <button v-on:click="zero" >First Vision</button>
+       <button v-on:click="one">Book of Mormon</button>
+       <button v-on:click="two">Restoration of the Priesthood</button>
+       <button v-on:click="three">Doctrine and Covenants</button>
+       <button v-on:click="four">Additional Scripture</button>
+       <button v-on:click="five">The Gathering of Zion</button>
+       <button v-on:click="six">Word of Wisdom and Temples</button>
+       <button v-on:click="seven">Kirtland and Mormon War</button>
+       <button v-on:click="eight">Nauvoo and Relief Society</button>
+       <button v-on:click="nine">Marriage and Sealings</button>
+   </div>
+   <button v-on:click="left" class='left'><</button>
+   <div class="center">
+       
+        <h1>Foundations of the Restoration</h1>
+        <p>{{current}}</p>
+        
+       
+   </div>
+   <button v-on:click="right" class='right'>></button>
+   
+   <textarea placeholder="Notes"  class="noteBox" v-model="notes"></textarea>
+   
+  <button v-on:click="random" class="rand">Random Quote</button>
+  
+ 
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
-  <script src="/script.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+ <script src="script.js"></script>
 </body>
 
 </html>

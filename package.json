@@ -1,25 +1,25 @@
 {
-  "name": "user-authentication",
+  "name": "lab-5-mongodb-hatchk12",
   "version": "1.0.0",
-  "description": "There are many ways to provide authentication for users in your application. Often, sites require a username and password, but others allow you to login with another account, such as Facebook or Google. Sometimes websites include two-factor authentication, such as with an extra application like Duo or a physical device like a YubiKey.",
-  "main": "index.js",
+  "description": "In this assignment, you will build an entire web application, using Vue for the front end and Node, Express, and Mongo on the back end.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hatchk12/creativeFinal.git"
+    "url": "git+https://github.com/BYUCS260/lab-5-mongodb-hatchk12.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hatchk12/creativeFinal/issues"
+    "url": "https://github.com/BYUCS260/lab-5-mongodb-hatchk12/issues"
   },
-  "homepage": "https://github.com/hatchk12/creativeFinal#readme",
+  "homepage": "https://github.com/BYUCS260/lab-5-mongodb-hatchk12#readme",
   "dependencies": {
-    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.13"
+    "mongoose": "^5.7.10",
+    "multer": "^1.4.2"
   }
 }
