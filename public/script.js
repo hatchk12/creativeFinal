@@ -140,23 +140,33 @@ var app = new Vue({
         this.loadNotes();
       },
       left(){
-        console.log("left val: " + this.val);
+        //console.log("left val: " + this.val);
         if(this.val >1){
           this.saveNotes();
           this.val--;
           this.current = this.quotes[this.cat][this.val];
           this.loadNotes();
         }
-        
+        else if(this.val == 1){
+        this.saveNotes();
+        this.val = 10;
+        this.current = this.quotes[this.cat][this.val];
+        this.loadNotes();
+        }
       },
       right(){
-        console.log("right val: " + this.val);
+        //console.log("right val: " + this.val);
         if(this.val <10){
         this.saveNotes();
         this.val++;
         this.current = this.quotes[this.cat][this.val];
         this.loadNotes();
-        
+        }
+        else if(this.val == 10){
+        this.saveNotes();
+        this.val = 1;
+        this.current = this.quotes[this.cat][this.val];
+        this.loadNotes();
         }
       },
       random(){
