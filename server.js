@@ -12,7 +12,7 @@ app.use(express.static('public'));
 const mongoose = require('mongoose');
 
 // connect to the database
-mongoose.connect('mongodb://localhost:27017/quotebook', {
+mongoose.connect('mongodb://localhost:27017/book', {
   useNewUrlParser: true
 });
 
@@ -33,11 +33,33 @@ app.post('/api/notes', async (req, res) => {
   const note = new Note({
     cat: req.body.cat,
     row: req.body.row,
-    notes: req.body.notes,
+    notes: req.body.note,
   });
-  console.log(note.notes);
+  Note.deleteOne({"cat":note.cat,"row":note.row}, (err , Note) => {
+		if(err) throw err;
+		//console.log(Item);
+	});
+  //console.log(Note.find());
   try {
+    //console.log("saving: " + note.notes);
     await note.save();
+    res.send(note.notes);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+app.put('/api/notes', async (req, res) => {
+  try {
+    //console.log(req);
+    var i = {
+      cat:req.body.cat,
+      row:req.body.row,
+    };
+    //console.log("cat: "+ req.body.cat + " row: " + req.body.row);
+    let note = await Note.findOne(i);
+    //console.log(note);
     res.send(note);
   } catch (error) {
     console.log(error);
@@ -45,20 +67,6 @@ app.post('/api/notes', async (req, res) => {
   }
 });
 
-
-app.get('/api/notes', async (req, res) => {
-  try {
-    var i = {
-      cat:req.body.cat,
-      row:req.body.row,
-    }
-    let note = await Note.findOne(i);
-    res.send(note.notes);
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
-  }
-});
 
 /*app.put('/api/notes/:id', async(req,res)=>{
   //console.log(req.body.title);

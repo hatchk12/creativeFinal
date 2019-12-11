@@ -7,6 +7,9 @@ var app = new Vue({
     data: {
     quotes:[],
     notes: '',
+    note:{
+      _id: "5df03c9d81f52033f258ff9f"
+    },
     cat: 0,
     val:1,
     full:'',
@@ -34,15 +37,18 @@ var app = new Vue({
     }
     this.current = this.quotes[0][1];
   });
+  this.loadNotes();
   },
   methods:{
       async saveNotes(){
         try {
         let response = await axios.post("/api/notes",{
           cat: this.cat,
-          row: this.row,
+          row: this.val,
+          note: this.notes,
         });
-        this.notes = response.data;
+        //console.log("save note");
+        //console.log("saved:" + response);
         return true;
       } catch (error) {
         console.log(error);
@@ -50,75 +56,116 @@ var app = new Vue({
       },
       async loadNotes(){
         try {
-        let response = await axios.get("/api/notes",{
+          //console.log(this.cat+ " " + this.val);
+        let response = await axios.put("/api/notes", {
           cat: this.cat,
-          row: this.row,
+          row: this.val,
         });
-        this.notes = response.data;
+        //console.log(response.data);
+        this.notes = response.data.notes;
         return true;
       } catch (error) {
         console.log(error);
       }
       },
       zero(){
+        this.saveNotes();
         this.cat = 0;
+        this.val = 1;
         this.current = this.quotes[0][1];
+        this.loadNotes();
       },
       one(){
+        this.saveNotes();
         this.cat = 1;
+        this.val = 1;
         this.current = this.quotes[1][1];
+        this.loadNotes();
       },
       two(){
+        this.saveNotes();
         this.cat = 2;
+        this.val = 1;
         this.current = this.quotes[2][1];
+        this.loadNotes();
       },
       three(){
+        this.saveNotes();
         this.cat = 3;
+        this.val = 1;
         this.current = this.quotes[3][1];
+        this.loadNotes();
       },
       four(){
+        this.saveNotes();
         this.cat = 4;
+        this.val = 1;
         this.current = this.quotes[4][1];
+        this.loadNotes();
       },
       five(){
+        this.saveNotes();
         this.cat = 5;
+        this.val = 1;
         this.current = this.quotes[5][1];
+        this.loadNotes();
       },
       six(){
+        this.saveNotes();
         this.cat = 6;
+        this.val = 1;
         this.current = this.quotes[6][1];
+        this.loadNotes();
       },
       seven(){
+        this.saveNotes();
+        this.saveNotes();
         this.cat = 7;
+        this.val = 1;
         this.current = this.quotes[7][1];
+        this.loadNotes();
       },
       eight(){
+        this.saveNotes();
         this.cat = 8;
+        this.val = 1;
         this.current = this.quotes[8][1];
+        this.loadNotes();
       },
       nine(){
+        this.saveNotes();
         this.cat = 9;
+        this.val = 1;
         this.current = this.quotes[9][1];
+        this.loadNotes();
       },
       left(){
+        console.log("left val: " + this.val);
         if(this.val >1){
+          this.saveNotes();
           this.val--;
           this.current = this.quotes[this.cat][this.val];
+          this.loadNotes();
         }
         
       },
       right(){
+        console.log("right val: " + this.val);
         if(this.val <10){
+        this.saveNotes();
         this.val++;
         this.current = this.quotes[this.cat][this.val];
+        this.loadNotes();
+        
         }
       },
       random(){
         this.saveNotes();
         this.cat = Math.floor(Math.random() * 10); 
         this.val = Math.floor(Math.random() * 10)+1;   
-        //console.log(this.cat + " " +this.val);
+        console.log(this.cat + " " +this.val);
         this.current = this.quotes[this.cat][this.val];
+        this.loadNotes();
       }
   },
 });
